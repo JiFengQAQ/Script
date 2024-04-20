@@ -138,9 +138,8 @@ if (body) {
                 console.log("system_service: " + R)
             }
             break;
-        case/api\/sns\/v\d\/search\/notes/.test($request.url):
+        case/api\/sns\/v\d+\/search\/notes/.test($request.url):
             try {
-                console.log("debug search_notes")
                 let q = JSON.parse(body);
                 q.data.items = q.data.items.filter(item => item.model_type == "note" && item.note.type == "normal"), body = JSON.stringify(q)
             } catch (E) {
