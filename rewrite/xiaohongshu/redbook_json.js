@@ -16,6 +16,7 @@ const version = 'V1.0.10';
 
 let body = $response.body;
 if (body) {
+    console.log("!!!!!!!:"+$request.url);
     switch (!0) {
         case/api\/sns\/v\d\/note\/widgets/.test($request.url):
             try {
