@@ -141,7 +141,7 @@ if (body) {
         case/api\/sns\/v\d\/search\/notes/.test($request.url):
             try {
                 let q = JSON.parse(body);
-                q.data.items = q.data.items.filter(e => !e.note.type == "normal"), body = JSON.stringify(q)
+                q.data.items = q.data.items.filter(item => item.model_type === "note" && item.note.type === "normal"), body = JSON.stringify(q)
             } catch (E) {
                 console.log("search_notes: " + E)
             }
