@@ -138,14 +138,20 @@ if (body) {
                 console.log("system_service: " + R)
             }
             break;
-        case/api\/sns\/v\d+\/search\/notes/.test($request.url):
-            try {
-                let q = JSON.parse(body);
-                q.data.items = q.data.items.filter(item => item.model_type == "note" && item.note.type == "normal"), body = JSON.stringify(q)
-            } catch (E) {
-                console.log("search_notes: " + E)
-            }
-            break;
+            case /api\/sns\/v\d+\/search\/notes/.test($request.url):
+                try {
+                    console.log("Original body:", body);  // 打印原始的body内容
+                    let q = JSON.parse(body);
+                    console.log("Parsed data:", q);  // 打印解析后的数据
+                    q.data.items = q.data.items.filter(item => item.model_type == "note" && item.note.type == "normal");
+                    console.log("Filtered items:", q.data.items);  // 打印过滤后的项目
+                    body = JSON.stringify(q);
+                    console.log("New body:", body);  // 打印重新序列化后的body内容
+                } catch (E) {
+                    console.log("search_notes: " + E);  // 打印捕获到的异常
+                }
+                break;
+            
         default:
             $done({})
     }
