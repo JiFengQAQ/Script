@@ -185,8 +185,7 @@ const DataBase = {
 														case true:
 														default:
 															let data = ViewReply.fromBinary(body);
-															$.log(`?? ${$.name}!!!!!!`);
-															$.dir(data);
+															$.log(`?? ${$.name}!!!!!!`,data);
 															if (data.cms?.length) {
 																data.cms = [];
 																if(isDebug)$.log(`?? ${$.name}`, "播放页广告卡片去除");
